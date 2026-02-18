@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for Fermi-Dirac visualization */
+
+:root {
+  --color-cyan: #00f5ff;
+  --color-violet: #a855f7;
+  --color-amber: #fbbf24;
+  --color-emerald: #10b981;
+  --color-rose: #f43f5e;
+  --color-blue: #3b82f6;
+}
+
+/* Base styles */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(135deg, #0a0a0f 0%, #0f1019 50%, #151723 100%);
+  min-height: 100vh;
+}
+
+/* Glassmorphism panel */
+.glass-panel {
+  @apply bg-midnight-800/60 backdrop-blur-glass border border-white/10 rounded-xl shadow-lg;
+}
+
+/* Neon glow effects */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.2), 0 0 40px rgba(0, 245, 255, 0.1);
+}
+
+.glow-violet {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2), 0 0 40px rgba(168, 85, 247, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Slider styles */
+input[type="range"] {
+  @apply appearance-none bg-transparent cursor-pointer;
+}
+
+input[type="range"]::-webkit-slider-track {
+  @apply h-1.5 rounded-full bg-midnight-600;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 rounded-full bg-neon-cyan cursor-pointer;
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+  margin-top: -5px;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  @apply bg-white;
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.8);
+}
+
+/* D3 chart styles */
+.chart-container {
+  @apply relative;
+}
+
+.chart-container svg {
+  @apply w-full h-full;
+}
+
+.axis-label {
+  @apply fill-gray-400 text-xs font-medium;
+}
+
+.grid-line {
+  stroke: #1c1f2e;
+  stroke-width: 0.5;
+}
+
+.curve {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.curve-glow {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.3;
+  filter: blur(3px);
+}
+
+/* Tooltip styles */
+.tooltip {
+  @apply absolute pointer-events-none bg-midnight-800/95 backdrop-blur-sm;
+  @apply border border-white/10 rounded-lg px-3 py-2 shadow-xl;
+  @apply text-sm font-mono z-50;
+  transform: translate(-50%, -100%);
+  margin-top: -10px;
+}
+
+/* Animation utilities */
+.animate-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* KaTeX overrides for dark theme */
+.katex {
+  @apply text-white;
+}
+
+.katex .mord {
+  color: inherit;
+}
+
+/* Toggle switch */
+.toggle {
+  @apply relative inline-flex items-center cursor-pointer;
+}
+
+.toggle-track {
+  @apply w-10 h-5 bg-midnight-600 rounded-full transition-colors;
+}
+
+.toggle-track.active {
+  @apply bg-neon-cyan/30;
+}
+
+.toggle-thumb {
+  @apply absolute w-4 h-4 bg-gray-400 rounded-full transition-all left-0.5 top-0.5;
+}
+
+.toggle-thumb.active {
+  @apply bg-neon-cyan left-[1.25rem];
+  box-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
+}
+
+/* Loading states */
+.loading-pulse {
+  @apply animate-pulse bg-midnight-600 rounded;
+}
+
+/* Heatmap specific */
+.heatmap-container {
+  @apply relative;
+}
+
+.heatmap-canvas {
+  @apply w-full h-full;
+}
+
+/* Educational panel */
+.edu-panel {
+  @apply max-w-none text-sm;
+}
+
+.edu-panel h3 {
+  @apply text-neon-cyan font-semibold text-lg mb-2;
+}
+
+.edu-panel p {
+  @apply text-gray-300 leading-relaxed;
+}
+
+.edu-panel code {
+  @apply bg-midnight-600 px-1.5 py-0.5 rounded text-neon-amber;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .glass-panel {
+    @apply rounded-lg;
+  }
+}
